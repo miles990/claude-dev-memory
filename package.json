@@ -1,0 +1,51 @@
+{
+  "name": "letta-memory-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server for Claude Code long-term memory via Letta Cloud",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "letta-memory-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "lint": "eslint src/",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "claude",
+    "letta",
+    "memory",
+    "ai"
+  ],
+  "author": "miles990",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miles990/letta-memory-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/miles990/letta-memory-mcp/issues"
+  },
+  "homepage": "https://github.com/miles990/letta-memory-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.27",
+    "typescript": "^5.3.0",
+    "vitest": "^1.6.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
