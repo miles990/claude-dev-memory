@@ -1,12 +1,12 @@
 {
-  "name": "letta-memory-mcp",
+  "name": "claude-dev-memory",
   "version": "1.0.0",
-  "description": "MCP Server for Claude Code long-term memory via Letta Cloud",
+  "description": "MCP Server for Claude Code project memory - multi-block Core Memory (project/learnings/decisions) via Letta Cloud",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "letta-memory-mcp": "./dist/index.js"
+    "claude-dev-memory": "./dist/index.js"
   },
   "files": [
     "dist"
@@ -23,20 +23,23 @@
   "keywords": [
     "mcp",
     "claude",
+    "claude-code",
     "letta",
     "memory",
-    "ai"
+    "ai",
+    "long-term-memory",
+    "development"
   ],
   "author": "miles990",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miles990/letta-memory-mcp.git"
+    "url": "git+https://github.com/miles990/claude-dev-memory.git"
   },
   "bugs": {
-    "url": "https://github.com/miles990/letta-memory-mcp/issues"
+    "url": "https://github.com/miles990/claude-dev-memory/issues"
   },
-  "homepage": "https://github.com/miles990/letta-memory-mcp#readme",
+  "homepage": "https://github.com/miles990/claude-dev-memory#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.1"
   },

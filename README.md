@@ -1,39 +1,68 @@
-# Letta Memory MCP
+# Claude Dev Memory
 
-為 Claude Code 提供長期記憶功能的 MCP Server，透過 Letta Cloud API 實現跨 session 記憶。
+為 Claude Code 開發工作流提供長期記憶功能的 MCP Server，透過 Letta Cloud API 實現跨 session 專案記憶。
 
 ## 功能特色
 
-- **Core Memory** - 專案上下文、學習紀錄、架構決策（~2000 tokens）
+- **多區塊 Core Memory** - project / learnings / decisions（~2000 tokens）
 - **Archival Memory** - 完整 spec、commit 記錄、詳細文檔（無大小限制）
-- **自動初始化** - 首次使用自動建立 Letta Agent
+- **專案導向** - 專為 Claude Code 開發工作流設計
 - **語意搜尋** - 透過向量搜尋找出相關記憶
+
+## 與官方 letta-memory-mcp 的差異
+
+| 面向 | 官方 letta-memory-mcp | claude-dev-memory |
+|------|----------------------|-------------------|
+| 目標用戶 | 通用 AI 應用 | Claude Code 開發者 |
+| Memory 結構 | 單一 human block | project / learnings / decisions |
+| Agent 策略 | 自動建立 per user | 指定現有 Agent |
+| 額外功能 | - | Token 計算、狀態檢查、類型標籤 |
 
 ## 安裝
 
 ```bash
-npm install -g letta-memory-mcp
+npm install -g claude-dev-memory
+```
+
+或使用 npx：
+
+```bash
+npx claude-dev-memory
 ```
 
 ## 配置
 
 ### 1. 取得 Letta API Key
 
-1. 前往 [Letta Cloud](https://www.letta.com/)
+1. 前往 [Letta Cloud](https://app.letta.com/)
 2. 註冊帳號並取得 API Key
+3. 建立 Agent 並記下 Agent ID
 
 ### 2. 配置 Claude Code
 
-在 Claude Code 設定中加入 MCP Server：
+```bash
+claude mcp add claude-dev-memory -s user -- npx claude-dev-memory
+```
+
+設定環境變數：
+
+```bash
+# 在專案 .env 或 shell profile 中
+export LETTA_API_KEY=sk-let-xxxxx
+export LETTA_AGENT_ID=agent-xxxxx
+```
+
+或使用 JSON 配置：
 
 ```json
 {
   "mcpServers": {
-    "letta-memory": {
+    "claude-dev-memory": {
       "command": "npx",
-      "args": ["letta-memory-mcp"],
+      "args": ["claude-dev-memory"],
       "env": {
-        "LETTA_API_KEY": "your-api-key-here"
+        "LETTA_API_KEY": "your-api-key-here",
+        "LETTA_AGENT_ID": "agent-xxxxx"
       }
     }
   }
@@ -44,7 +73,7 @@ npm install -g letta-memory-mcp
 
 ### memory_status
 
-查看記憶系統狀態，首次使用時自動初始化 Agent。
+查看記憶系統狀態。
 
 ```
 顯示：連線狀態、Core Memory 使用量、Archival 記錄數
@@ -165,6 +194,10 @@ npm install -g letta-memory-mcp
 ## 開發
 
 ```bash
+# Clone
+git clone https://github.com/miles990/claude-dev-memory.git
+cd claude-dev-memory
+
 # 安裝依賴
 npm install
 
